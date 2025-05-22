@@ -1,0 +1,70 @@
+/* App.css */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1e40af; /* blue-800 */
+  margin-bottom: 2rem;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 2px solid #1e40af;
+  border-radius: 6px;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-field:focus {
+  border-color: #2563eb; /* blue-600 */
+}
+
+.donate-button {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  border: 2px solid #1e40af;
+  background: transparent;
+  color: #1e40af;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.donate-button:hover {
+  background: #1e40af;
+  color: white;
+}
+
+.message {
+  margin-top: 1rem;
+  color: green;
+  font-weight: 600;
+}
+
+.total-donations {
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #374151; /* gray-700 */
+}
+
+.footer {
+  margin-top: 5rem;
+  font-size: 0.9rem;
+  color: #6b7280; /* gray-500 */
+}
