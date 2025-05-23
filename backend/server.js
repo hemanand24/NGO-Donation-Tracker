@@ -12,6 +12,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT;
 const mong = process.env.MONGO_URI;
+
 // Connect to MongoDB Atlas
 mongoose.connect(mong, {
   useNewUrlParser: true,
