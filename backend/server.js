@@ -10,10 +10,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-//const PORT = process.env.PORT;
-//const mong = process.env.MONGO_URI;
-PORT=5000;
-mong="mongodb+srv://Hemanand:vdzi3Y5yF99sfXYc@ngo.oln3cp2.mongodb.net/ngo-donation-db?retryWrites=true&w=majority&appName=NGO";
+const PORT = process.env.PORT;
+const mong = process.env.MONGO_URI;
 // Connect to MongoDB Atlas
 mongoose.connect(mong, {
   useNewUrlParser: true,
