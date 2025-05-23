@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngo-frontend
+  namespace: ngo-app
+spec:
+  type: LoadBalancer
+  selector:
+    app: ngo-frontend
+  ports:
+    - port: 80
+      targetPort: 80
