@@ -122,4 +122,6 @@ Then open http://localhost:3000
 
   ✅ Clean Kubernetes manifests
 
+License
 
+This project is open source and free to use.
