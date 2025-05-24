@@ -19,7 +19,7 @@ pipeline {
         stage('Build Frontend Docker Image') {
             steps {
                 dir('frontend') {
-                    bat 'docker build -t $FRONTEND_IMAGE:latest .'
+                    bat 'docker build -t %FRONTEND_IMAGE%:latest .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 dir('backend') {
-                    bat 'docker build -t $BACKEND_IMAGE:latest .'
+                    bat 'docker build -t %BACKEND_IMAGE:latest .'
                 }
             }
         }
