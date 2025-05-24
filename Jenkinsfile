@@ -19,7 +19,7 @@ pipeline {
         stage('Build Frontend Docker Image') {
             steps {
                 dir('frontend') {
-                    sh 'docker build -t $FRONTEND_IMAGE:latest .'
+                    bat 'docker build -t $FRONTEND_IMAGE:latest .'
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
         stage('Build Backend Docker Image') {
             steps {
                 dir('backend') {
-                    sh 'docker build -t $BACKEND_IMAGE:latest .'
+                    bat 'docker build -t $BACKEND_IMAGE:latest .'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Push Images to DockerHub') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh '''
+                    bat '''
                         echo "$PASSWORD" | docker login -u "$USERNAME" --password-stdin
                         docker push $FRONTEND_IMAGE:latest
                         docker push $BACKEND_IMAGE:latest
@@ -46,7 +46,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                sh '''
+                bat '''
                     kubectl set image deployment/frontend-deployment frontend-container=$FRONTEND_IMAGE:latest -n $NAMESPACE
                     kubectl set image deployment/backend-deployment backend-container=$BACKEND_IMAGE:latest -n $NAMESPACE
                 '''
