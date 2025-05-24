@@ -4,8 +4,8 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
         DOCKERHUB_USERNAME = 'hemanandj'
-        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/ngo-frontend"
-        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/ngo-backend"
+        FRONTEND_IMAGE = "${DOCKERHUB_USERNAME}/ngo-donation-tracker-frontend"
+        BACKEND_IMAGE = "${DOCKERHUB_USERNAME}/ngo-donation-tracker-backend"
         NAMESPACE = 'namespace'
     }
 
