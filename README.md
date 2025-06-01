@@ -142,5 +142,6 @@ Then open http://localhost:8081
 
 ## 👤 Author License
 
-Hemanand
+### Hemanand J
+
 This project is open source and free to use.
