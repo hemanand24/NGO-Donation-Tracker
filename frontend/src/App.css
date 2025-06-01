@@ -63,6 +63,36 @@
   color: #374151; /* gray-700 */
 }
 
+.donation-table-container {
+  max-height: 300px;
+  overflow-y: auto;
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 600px;
+  background: #111827;
+  border-radius: 10px;
+  border: 1px solid #1e40af;
+}
+
+.donation-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e5e7eb; /* gray-200 */
+}
+
+.donation-table th,
+.donation-table td {
+  padding: 0.5rem;
+  border-bottom: 1px solid #374151;
+}
+
+.donation-table th {
+  background-color: #1e40af;
+  color: white;
+  position: sticky;
+  top: 0;
+}
+
 .footer {
   margin-top: 5rem;
   font-size: 0.9rem;

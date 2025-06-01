@@ -12,7 +12,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT;
 const mong = process.env.MONGO_URI;
-
+const incharges = ['Rachael', 'Mike', 'Nivaan', 'Aaryan', 'Nivie'];
 // Connect to MongoDB Atlas
 mongoose.connect(mong, {
   useNewUrlParser: true,
@@ -25,9 +25,11 @@ mongoose.connect(mong, {
 app.post('/donate', async (req, res) => {
   const { name, amount } = req.body;
   try {
-    const donation = new Donation({ name, amount });
-    await donation.save();
-    res.status(201).json({ message: 'Donation successful', donation });
+    const count = await Donation.countDocuments();
+    const distribution = incharges[count % incharges.length];
+    const newdonation = new Donation({ name, amount, distribution });
+    await newdonation.save();
+    res.status(201).json({ message: 'Donation successful', newdonation });
   } catch (err) {
     res.status(500).json({ error: 'Failed to save donation' });
   }
@@ -42,6 +44,16 @@ app.get('/total', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch total donations' });
   }
 });
+
+app.get('/donations', async (req, res) => {
+  try {
+    const donations = await Donation.find().sort({ donatedAt: -1 }); // latest first
+    res.json({ donations });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch donations' });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

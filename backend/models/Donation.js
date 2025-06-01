@@ -9,6 +9,10 @@ const donationSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  distribution: {
+    type: String,
+    required: true,
+  },
   donatedAt: {
     type: Date,
     default: Date.now,
