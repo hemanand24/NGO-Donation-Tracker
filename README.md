@@ -18,7 +18,7 @@ A full-stack donation tracking app for NGOs — built with React, Node.js, Expre
 ## 🚀 Features
 
 - Submit donations (name + amount)
-- View total donations and donation history.
+- View total donations and donation history
 - Fully containerized
 - Automated CI/CD pipeline for creation of containers using Argo CD
 - Deployed using Render and Vercel
