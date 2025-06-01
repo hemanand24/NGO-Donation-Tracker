@@ -89,26 +89,26 @@ Then open http://localhost:3000
 ```
 📂 File Structure
 
-.
-├── backend/
-│   ├── server.js
-│   ├── models/
-│   │   └── Donation.js
-│   └── .env
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx
-│   │   └── App.css
-│   └── public/
-│       └── index.html
-├── k8s/
-│   ├── namespace.yaml
-│   ├── secret.yaml
-│   ├── backend-deployment.yaml
-│   ├── backend-service.yaml
-│   ├── frontend-deployment.yaml
-│   └── frontend-service.yaml
-└── README.md
+.                                                                                                                                                          
+├── backend/                                                                                                                                               
+│   ├── server.js                                                                                                                                          
+│   ├── models/                                                                                                                                            
+│   │   └── Donation.js                                                                                                                                    
+│   └── .env                                                                                                                                               
+├── frontend/                                                                                                                                              
+│   ├── src/                                                                                                                                               
+│   │   ├── App.jsx                                                                                                                                        
+│   │   └── App.css                                                                                                                                        
+│   └── public/                                                                                                                                            
+│       └── index.html                                                                                                                                     
+├── k8s/                                                                                                                                                   
+│   ├── namespace.yaml                                                                                                                                     
+│   ├── secret.yaml                                                                                                                                        
+│   ├── backend-deployment.yaml                                                                                                                            
+│   ├── backend-service.yaml                                                                                                                               
+│   ├── frontend-deployment.yaml                                                                                                                           
+│   └── frontend-service.yaml                                                                                                                              
+└── README.md                                                                                                                                              
 
 📌 DevOps Highlights
     
