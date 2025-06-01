@@ -1,6 +1,6 @@
 # 🫱 HelpHands NGO Donation App
 
-A full-stack donation tracking app for NGOs — built with React, Node.js, Express, and MongoDB, containerized with Docker, and deployed using Kubernetes (KIND). This project showcases DevOps practices like containerization, secrets management, namespaces, and manifest-based deployments.
+A full-stack donation tracking app for NGOs — built with React, Node.js, Express, and MongoDB, containerized with Docker, deployed and hosted using Render and Vercel for backend and frontend respectively. This project showcases DevOps practices like containerization, secrets management, namespaces, manifest-based deployments and CI/CD pipeline.
 
 ---
 
@@ -9,8 +9,10 @@ A full-stack donation tracking app for NGOs — built with React, Node.js, Expre
 - **Frontend:** React
 - **Backend:** Node.js + Express
 - **Database:** MongoDB Atlas
-- **DevOps:** Docker, Kubernetes (KIND), Secrets, Namespaces
-
+- **DevOps**: Docker, Kubernetes, ArgoCD, GitHub
+- **Hosting**:
+  - Frontend: [Vercel](https://ngo-donation-tracker.vercel.app/)
+  - Backend: [Render](https://ngo-donation-tracker-1.onrender.com)
 ---
 
 ## 🚀 Features
@@ -18,13 +20,14 @@ A full-stack donation tracking app for NGOs — built with React, Node.js, Expre
 - Submit donations (name + amount)
 - View total donations
 - Fully containerized
-- Deployed on Kubernetes with KIND
+- Automated CI/CD pipeline for creation of containers using Argo CD
+- Deployed using Render and Vercel
 
 ---
 
 ## 📦 Local Setup
 
-### 1. Clone the repository
+1. Clone the repository
 
 ```
 git clone https://github.com/hemanand24/NGO-Donation-Tracker.git
@@ -53,8 +56,8 @@ cd frontend
 npm install
 npm start
 ```
-🐳 Docker Setup
-Build Images
+## 🐳 Docker Setup
+1. Build Images
 ```
 # Backend
 docker build -t ngo-donation-backend ./backend
@@ -62,7 +65,15 @@ docker build -t ngo-donation-backend ./backend
 # Frontend
 docker build -t ngo-donation-frontend ./frontend
 ```
-☸️ Kubernetes (KIND) Deployment
+2. Push Images
+```
+# Backend
+docker push hemanandj/ngo-backend
+
+# Frontend
+docker push hemanandj/ngo-frontend
+```
+## ☸️ Kubernetes (KIND) local Deployment
 1. Start KIND Cluster
 ```
 kind create cluster --name dev-cluster
@@ -70,7 +81,7 @@ kind create cluster --name dev-cluster
 2. Apply Namespace and Secret
 ```
 kubectl apply -f k8s/namespace.yaml
-kubectl apply -f k8s/secret.yaml
+kubectl apply -f k8s/mongo-secret.yaml
 ```
 3. Deploy Backend & Frontend
 ```
@@ -79,15 +90,18 @@ kubectl apply -n ngo-app -f k8s/backend-service.yaml
 kubectl apply -n ngo-app -f k8s/frontend-deployment.yaml
 kubectl apply -n ngo-app -f k8s/frontend-service.yaml
 ```
-4. Access the App
-
-To access the frontend:
+4. Enable ArgoCD and connect GitHub repo
 ```
-kubectl port-forward svc/ngo-donation-frontend-service 3000:80 -n ngo-app
-
-Then open http://localhost:3000
+kubectl apply -f k8s/argo-app.yaml
 ```
-📂 File Structure
+5. Access the App for local preview
+```
+kubectl port-forward svc/frontend-service 8081:80 -n ngo-donation
+kubectl port-forward svc/backend-service 5000:5000 -n ngo-donation
+
+Then open http://localhost:8081
+```
+## 📂 File Structure
 
 .                                                                                                                                                          
 ├── backend/                                                                                                                                               
@@ -111,7 +125,7 @@ Then open http://localhost:3000
 └── README.md                                                                                                                                              
 
 
-📌 DevOps Highlights
+## 📌 DevOps Highlights
     
   ✅ Dockerized frontend and backend
 
@@ -123,6 +137,10 @@ Then open http://localhost:3000
 
   ✅ Clean Kubernetes manifests
 
-License
+  ✅ CI/CD via ArgoCD 
 
+
+## 👤 Author License
+
+Hemanand
 This project is open source and free to use.
