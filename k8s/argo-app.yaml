@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ngo-donation-app
+  namespace: argocd  # ArgoCD's default namespace
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/hemanand24/NGO-Donation-Tracker'  # Replace with your repo
+    targetRevision: HEAD
+    path: k8s  # Folder where your YAMLs are stored (e.g., NGO-Donation-Tracker/k8s)
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: ngo-donation
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

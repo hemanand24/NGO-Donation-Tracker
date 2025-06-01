@@ -1,24 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ngo-backend
-  namespace: ngo-app
+  name: backend
+  namespace: ngo-donation
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: ngo-backend
+      app: backend
   template:
     metadata:
       labels:
-        app: ngo-backend
+        app: backend
     spec:
       containers:
-        - name: ngo-backend
-          image: ngo-backend:latest
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 5000
-          envFrom:
-            - secretRef:
-                name: ngo-backend-secrets
+      - name: backend
+        image: hemanandj/ngo-backend
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: MONGO_URI
