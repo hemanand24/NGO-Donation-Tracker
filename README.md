@@ -88,7 +88,6 @@ kubectl port-forward svc/ngo-donation-frontend-service 3000:80 -n ngo-app
 Then open http://localhost:3000
 ```
 📂 File Structure
-
 .                                                                                                                                                          
 ├── backend/                                                                                                                                               
 │   ├── server.js                                                                                                                                          
