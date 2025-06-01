@@ -17,7 +17,7 @@ function App() {
 
   const fetchTotalDonations = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/total');
+      const res = await axios.get('https://ngo-donation-tracker-1.onrender.com/total');
       setTotal(res.data.total);
     } catch (error) {
       console.error('Error fetching total:', error);
@@ -26,7 +26,7 @@ function App() {
 
   const fetchDonationHistory = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/donations');
+      const res = await axios.get('https://ngo-donation-tracker-1.onrender.com/donations');
       setDonations(res.data.donations);
     } catch (error) {
       console.error('Error fetching donations:', error);
@@ -40,7 +40,7 @@ function App() {
       return;
     }
     try {
-      await axios.post('http://localhost:5000/donate', { name, amount: Number(amount) });
+      await axios.post('https://ngo-donation-tracker-1.onrender.com/donate', { name, amount: Number(amount) });
       setMessage('Thank you for your donation!');
       setName('');
       setAmount('');
